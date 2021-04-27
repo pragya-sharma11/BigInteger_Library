@@ -35,7 +35,9 @@ public class BigIntegerExecution {
             case SUBTRACT:
                 result=sub();
                 break;
-
+            case MULTIPLY:
+                result=multiply();
+                break;
             case EXIT:
                 JOptionPane.showMessageDialog(
                         null,
@@ -89,7 +91,28 @@ public class BigIntegerExecution {
 
         return big.subtract(number1,number2);
     }
+    private static  BigInteger multiply() {
+        LinkedList<BigInteger> list1 = new LinkedList<>();
+        BigInteger number = BigInteger.ZERO;
+        int i = 0;
+        while (i != 1) {
+            try {
+                number = (new BigInteger((JOptionPane.showInputDialog(
+                        null,
+                        "Enter the number to be added or write null if u have filled all numbers",
+                        "Number",
+                        JOptionPane.PLAIN_MESSAGE
+                )))
+                );
+                list1.add(number);
+            } catch (Exception e) {
+                i = 1;
+            }
+        }
+        BigIntegerOperations big = new BigIntegerOperations();
 
+        return big.multiply(list1);
+    }
 
 }
 

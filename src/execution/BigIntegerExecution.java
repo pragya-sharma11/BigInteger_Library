@@ -11,7 +11,7 @@ public class BigIntegerExecution {
     public void calculate() {
         Scanner scanner = new Scanner(System.in);
         BigInteger result = BigInteger.ZERO;
-        char symbol='\0';
+        char symbol = '\0';
         JOptionPane.showMessageDialog(
                 null,
                 "Choose any operation according to the need -: + for ADD, " +
@@ -27,9 +27,8 @@ public class BigIntegerExecution {
                     "Choice",
                     JOptionPane.PLAIN_MESSAGE
             )).charAt(0);
-            //Choice choice = Choice.valueOf(inputChoice);
-            //symbol = choice.getSymbol();
-            label:switch (symbol) {
+            label:
+            switch (symbol) {
                 case '+':
                     result = add(result);
                     break label;
@@ -46,13 +45,13 @@ public class BigIntegerExecution {
                 case '=':
                     JOptionPane.showMessageDialog(
                             null,
-                            "The result of computation is : "+String.valueOf(result),
+                            "The result of computation is : " + result,
                             "ANSWER",
                             JOptionPane.CLOSED_OPTION
                     );
 
             }
-        }while (symbol != '=');
+        } while (symbol != '=');
         System.out.println(result);
     }
 
@@ -80,13 +79,13 @@ public class BigIntegerExecution {
     }
 
     private BigInteger sub(BigInteger result) {
-        BigInteger number1 = result==BigInteger.ZERO?(new BigInteger((JOptionPane.showInputDialog(
+        BigInteger number1 = result == BigInteger.ZERO ? (new BigInteger((JOptionPane.showInputDialog(
                 null,
                 "Enter the number from which other number is subtracted.",
                 "Number",
                 JOptionPane.PLAIN_MESSAGE
         )))
-        ):result;
+        ) : result;
         BigInteger number2 = (new BigInteger((JOptionPane.showInputDialog(
                 null,
                 "Enter the number to be subtracted",
@@ -98,7 +97,7 @@ public class BigIntegerExecution {
         return big.subtract(number1, number2);
     }
 
-    private  BigInteger multiply(BigInteger result) {
+    private BigInteger multiply(BigInteger result) {
         LinkedList<BigInteger> list1 = new LinkedList<>();
         list1.add(result);
         BigInteger number = BigInteger.ZERO;
@@ -121,14 +120,14 @@ public class BigIntegerExecution {
         return big.multiply(list1);
     }
 
-    private BigInteger divide(BigInteger result){
-        BigInteger number1 = result==BigInteger.ZERO?(new BigInteger((JOptionPane.showInputDialog(
+    private BigInteger divide(BigInteger result) {
+        BigInteger number1 = result == BigInteger.ZERO ? (new BigInteger((JOptionPane.showInputDialog(
                 null,
                 "Enter the quotient",
                 "Number",
                 JOptionPane.PLAIN_MESSAGE
         )))
-        ):result;
+        ) : result;
         BigInteger number2 = (new BigInteger((JOptionPane.showInputDialog(
                 null,
                 "Enter the divisor",

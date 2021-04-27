@@ -26,43 +26,46 @@ public class BigIntegerExecution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BigInteger result = BigInteger.ZERO;
-        JOptionPane.showMessageDialog(
-                null,
-                "Choose any operation according to the need -: ADD, SUBTRACT, MULTIPLY, DIVIDE, ANSWER ",
-                "SELECTION",
-                JOptionPane.PLAIN_MESSAGE
-        );
-        String inputChoice = JOptionPane.showInputDialog(
-                null,
-                "Enter Choice",
-                "Choice",
-                JOptionPane.PLAIN_MESSAGE
-        );
-        Choice choice = Choice.valueOf(inputChoice);
-        char symbol= choice.getSymbol();
-        switch (symbol) {
-            case '+':
-                result = add(result);
-                break;
-            case '-':
-                result = sub(result);
-                break;
-            case '*':
-                result=result==BigInteger.ZERO?BigInteger.ONE:result;
-                result = multiply(result);
-                break;
-            case '/':
-                result = divide(result);
-                break;
-            case '=':
-                JOptionPane.showMessageDialog(
-                        null,
-                        String.valueOf(result),
-                        "ANSWER",
-                        JOptionPane.CLOSED_OPTION
-                );
-                break;
-        }
+        char symbol='\0';
+        do {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Choose any operation according to the need -: ADD, SUBTRACT, MULTIPLY, DIVIDE, ANSWER ",
+                    "SELECTION",
+                    JOptionPane.PLAIN_MESSAGE
+            );
+            String inputChoice = JOptionPane.showInputDialog(
+                    null,
+                    "Enter Choice",
+                    "Choice",
+                    JOptionPane.PLAIN_MESSAGE
+            );
+            Choice choice = Choice.valueOf(inputChoice);
+            symbol = choice.getSymbol();
+            switch (symbol) {
+                case '+':
+                    result = add(result);
+                    break;
+                case '-':
+                    result = sub(result);
+                    break;
+                case '*':
+                    result = result == BigInteger.ZERO ? BigInteger.ONE : result;
+                    result = multiply(result);
+                    break;
+                case '/':
+                    result = divide(result);
+                    break;
+                case '=':
+                    JOptionPane.showMessageDialog(
+                            null,
+                            String.valueOf(result),
+                            "ANSWER",
+                            JOptionPane.CLOSED_OPTION
+                    );
+                    break;
+            }
+        }while (symbol == '=');
         System.out.println(result);
     }
 

@@ -64,7 +64,7 @@ public class BigIntegerExecution {
             try {
                 number = (new BigInteger((JOptionPane.showInputDialog(
                         null,
-                        "Enter the number to be added or write null if u have filled all numbers",
+                        "Enter the number to be added or write ok if u have filled all numbers",
                         "Number",
                         JOptionPane.PLAIN_MESSAGE
                 )))
@@ -106,7 +106,7 @@ public class BigIntegerExecution {
             try {
                 number = (new BigInteger((JOptionPane.showInputDialog(
                         null,
-                        "Enter the number to be multiplied or write null if u have filled all numbers",
+                        "Enter the number to be multiplied or write ok if u have filled all numbers",
                         "Number",
                         JOptionPane.PLAIN_MESSAGE
                 )))

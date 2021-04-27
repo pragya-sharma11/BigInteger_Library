@@ -7,21 +7,6 @@ import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-enum Choice {
-    ADD('+'),
-    SUBTRACT('-'),
-    MULTIPLY('*'),
-    DIVIDE('/'),
-    ANSWER('=');
-    private final char symbol;
-    Choice(char symbol){
-        this.symbol=symbol;
-    }
-    public char getSymbol(){
-        return this.symbol;
-    }
-}
-
 public class BigIntegerExecution {
     public void calculate() {
         Scanner scanner = new Scanner(System.in);
@@ -91,7 +76,6 @@ public class BigIntegerExecution {
             }
         }
         BigIntegerOperations big = new BigIntegerOperations();
-
         return big.add(list);
     }
 
@@ -111,7 +95,6 @@ public class BigIntegerExecution {
         )))
         );
         BigIntegerOperations big = new BigIntegerOperations();
-
         return big.subtract(number1, number2);
     }
 
@@ -135,7 +118,6 @@ public class BigIntegerExecution {
             }
         }
         BigIntegerOperations big = new BigIntegerOperations();
-
         return big.multiply(list1);
     }
 
@@ -155,9 +137,7 @@ public class BigIntegerExecution {
         )))
         );
         BigIntegerOperations big = new BigIntegerOperations();
-
         return big.divide(number1, number2);
     }
-
 }
 

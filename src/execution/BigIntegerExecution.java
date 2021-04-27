@@ -19,7 +19,14 @@ public class BigIntegerExecution {
                 JOptionPane.PLAIN_MESSAGE
         );
         Choice choice = Choice.valueOf(inputChoice);
-
+        switch (choice){
+            case EXIT:JOptionPane.showMessageDialog(
+                    null,
+                    "You have choosen to exit.Have a nice day!!",
+                    "EXIT",
+                    JOptionPane.CLOSED_OPTION
+            );
+        }
     }
 }
 

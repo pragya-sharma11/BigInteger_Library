@@ -1,7 +1,5 @@
 package operations;
 
-import operations.BigIntegerOperations;
-
 import javax.swing.*;
 import java.math.BigInteger;
 import java.util.LinkedList;

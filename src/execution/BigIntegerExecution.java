@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 enum Choice {
-    ADD, SUBTRACT, MULTIPLY, DIVIDE, EXIT
+    ADD, SUBTRACT, MULTIPLY, DIVIDE, ANSWER
 }
 
 public class BigIntegerExecution {
@@ -17,7 +17,7 @@ public class BigIntegerExecution {
         BigInteger result = BigInteger.ZERO;
         JOptionPane.showMessageDialog(
                 null,
-                "Choose any operation according to the need -: ADD, SUBTRACT, MULTIPLY, DIVIDE, EXIT ",
+                "Choose any operation according to the need -: ADD, SUBTRACT, MULTIPLY, DIVIDE, ANSWER ",
                 "SELECTION",
                 JOptionPane.PLAIN_MESSAGE
         );
@@ -30,29 +30,32 @@ public class BigIntegerExecution {
         Choice choice = Choice.valueOf(inputChoice);
         switch (choice) {
             case ADD:
-                result = add();
+                result = add(result);
                 break;
             case SUBTRACT:
-                result = sub();
+                result = sub(result);
                 break;
             case MULTIPLY:
-                result = multiply();
+                result=result==BigInteger.ZERO?BigInteger.ONE:result;
+                result = multiply(result);
                 break;
             case DIVIDE:
-                result = divide();
+                result = divide(result);
                 break;
-            case EXIT:
+            case ANSWER:
                 JOptionPane.showMessageDialog(
                         null,
-                        "You have choosen to exit.Have a nice day!!",
-                        "EXIT",
+                        String.valueOf(result),
+                        "ANSWER",
                         JOptionPane.CLOSED_OPTION
                 );
+                break;
         }
     }
 
-    public static BigInteger add() {
+    public static BigInteger add(BigInteger result) {
         LinkedList<BigInteger> list = new LinkedList<>();
+        list.add(result);
         BigInteger number = BigInteger.ZERO;
         int i = 0;
         while (i != 1) {
@@ -74,17 +77,17 @@ public class BigIntegerExecution {
         return big.add(list);
     }
 
-    public static BigInteger sub() {
-        BigInteger number1 = (new BigInteger((JOptionPane.showInputDialog(
+    public static BigInteger sub(BigInteger result) {
+        BigInteger number1 = result==BigInteger.ZERO?(new BigInteger((JOptionPane.showInputDialog(
                 null,
-                "Enter the number to be added or write null if u have filled all numbers",
+                "Enter the number from which other number is subtracted.",
                 "Number",
                 JOptionPane.PLAIN_MESSAGE
         )))
-        );
+        ):result;
         BigInteger number2 = (new BigInteger((JOptionPane.showInputDialog(
                 null,
-                "Enter the number to be added or write null if u have filled all numbers",
+                "Enter the number to be subtracted",
                 "Number",
                 JOptionPane.PLAIN_MESSAGE
         )))
@@ -94,15 +97,16 @@ public class BigIntegerExecution {
         return big.subtract(number1, number2);
     }
 
-    private static BigInteger multiply() {
+    private static BigInteger multiply(BigInteger result) {
         LinkedList<BigInteger> list1 = new LinkedList<>();
+        list1.add(result);
         BigInteger number = BigInteger.ZERO;
         int i = 0;
         while (i != 1) {
             try {
                 number = (new BigInteger((JOptionPane.showInputDialog(
                         null,
-                        "Enter the number to be added or write null if u have filled all numbers",
+                        "Enter the number to be multiplied or write null if u have filled all numbers",
                         "Number",
                         JOptionPane.PLAIN_MESSAGE
                 )))
@@ -117,17 +121,17 @@ public class BigIntegerExecution {
         return big.multiply(list1);
     }
 
-    private static BigInteger divide(){
-        BigInteger number1 = (new BigInteger((JOptionPane.showInputDialog(
+    private static BigInteger divide(BigInteger result){
+        BigInteger number1 = result==BigInteger.ZERO?(new BigInteger((JOptionPane.showInputDialog(
                 null,
-                "Enter the number to be added or write null if u have filled all numbers",
+                "Enter the quotient",
                 "Number",
                 JOptionPane.PLAIN_MESSAGE
         )))
-        );
+        ):result;
         BigInteger number2 = (new BigInteger((JOptionPane.showInputDialog(
                 null,
-                "Enter the number to be added or write null if u have filled all numbers",
+                "Enter the divisor",
                 "Number",
                 JOptionPane.PLAIN_MESSAGE
         )))

@@ -26,7 +26,7 @@ public class BigIntegerOperations {
         return mul;
     }
 
-    public  BigInteger divide(BigInteger divisor, BigInteger quotient){
+    public  BigInteger divide(BigInteger quotient, BigInteger divisor){
         BigInteger div = quotient.divide(divisor);
         return  div;
     }

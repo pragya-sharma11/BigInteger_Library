@@ -33,10 +33,13 @@ public class BigIntegerExecution {
                 result = add();
                 break;
             case SUBTRACT:
-                result=sub();
+                result = sub();
                 break;
             case MULTIPLY:
-                result=multiply();
+                result = multiply();
+                break;
+            case DIVIDE:
+                result = divide();
                 break;
             case EXIT:
                 JOptionPane.showMessageDialog(
@@ -50,9 +53,9 @@ public class BigIntegerExecution {
 
     public static BigInteger add() {
         LinkedList<BigInteger> list = new LinkedList<>();
-        BigInteger number =BigInteger.ZERO;
-        int i=0;
-        while(i!=1){
+        BigInteger number = BigInteger.ZERO;
+        int i = 0;
+        while (i != 1) {
             try {
                 number = (new BigInteger((JOptionPane.showInputDialog(
                         null,
@@ -62,9 +65,8 @@ public class BigIntegerExecution {
                 )))
                 );
                 list.add(number);
-            }
-            catch(Exception e ) {
-                i=1;
+            } catch (Exception e) {
+                i = 1;
             }
         }
         BigIntegerOperations big = new BigIntegerOperations();
@@ -72,7 +74,7 @@ public class BigIntegerExecution {
         return big.add(list);
     }
 
-    public static BigInteger sub(){
+    public static BigInteger sub() {
         BigInteger number1 = (new BigInteger((JOptionPane.showInputDialog(
                 null,
                 "Enter the number to be added or write null if u have filled all numbers",
@@ -89,9 +91,10 @@ public class BigIntegerExecution {
         );
         BigIntegerOperations big = new BigIntegerOperations();
 
-        return big.subtract(number1,number2);
+        return big.subtract(number1, number2);
     }
-    private static  BigInteger multiply() {
+
+    private static BigInteger multiply() {
         LinkedList<BigInteger> list1 = new LinkedList<>();
         BigInteger number = BigInteger.ZERO;
         int i = 0;
@@ -112,6 +115,26 @@ public class BigIntegerExecution {
         BigIntegerOperations big = new BigIntegerOperations();
 
         return big.multiply(list1);
+    }
+
+    private static BigInteger divide(){
+        BigInteger number1 = (new BigInteger((JOptionPane.showInputDialog(
+                null,
+                "Enter the number to be added or write null if u have filled all numbers",
+                "Number",
+                JOptionPane.PLAIN_MESSAGE
+        )))
+        );
+        BigInteger number2 = (new BigInteger((JOptionPane.showInputDialog(
+                null,
+                "Enter the number to be added or write null if u have filled all numbers",
+                "Number",
+                JOptionPane.PLAIN_MESSAGE
+        )))
+        );
+        BigIntegerOperations big = new BigIntegerOperations();
+
+        return big.divide(number1, number2);
     }
 
 }

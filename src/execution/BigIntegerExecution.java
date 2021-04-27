@@ -32,6 +32,10 @@ public class BigIntegerExecution {
             case ADD:
                 result = add();
                 break;
+            case SUBTRACT:
+                result=sub();
+                break;
+
             case EXIT:
                 JOptionPane.showMessageDialog(
                         null,
@@ -65,4 +69,27 @@ public class BigIntegerExecution {
 
         return big.add(list);
     }
+
+    public static BigInteger sub(){
+        BigInteger number1 = (new BigInteger((JOptionPane.showInputDialog(
+                null,
+                "Enter the number to be added or write null if u have filled all numbers",
+                "Number",
+                JOptionPane.PLAIN_MESSAGE
+        )))
+        );
+        BigInteger number2 = (new BigInteger((JOptionPane.showInputDialog(
+                null,
+                "Enter the number to be added or write null if u have filled all numbers",
+                "Number",
+                JOptionPane.PLAIN_MESSAGE
+        )))
+        );
+        BigIntegerOperations big = new BigIntegerOperations();
+
+        return big.subtract(number1,number2);
+    }
+
+
 }
+

@@ -23,7 +23,7 @@ enum Choice {
 }
 
 public class BigIntegerExecution {
-    public static void main(String[] args) {
+    public void calculate() {
         Scanner scanner = new Scanner(System.in);
         BigInteger result = BigInteger.ZERO;
         char symbol='\0';
@@ -61,7 +61,7 @@ public class BigIntegerExecution {
                 case '=':
                     JOptionPane.showMessageDialog(
                             null,
-                            String.valueOf(result),
+                            "The result of computation is : "+String.valueOf(result),
                             "ANSWER",
                             JOptionPane.CLOSED_OPTION
                     );
@@ -71,7 +71,7 @@ public class BigIntegerExecution {
         System.out.println(result);
     }
 
-    public static BigInteger add(BigInteger result) {
+    private BigInteger add(BigInteger result) {
         LinkedList<BigInteger> list = new LinkedList<>();
         list.add(result);
         BigInteger number = BigInteger.ZERO;
@@ -95,7 +95,7 @@ public class BigIntegerExecution {
         return big.add(list);
     }
 
-    public static BigInteger sub(BigInteger result) {
+    private BigInteger sub(BigInteger result) {
         BigInteger number1 = result==BigInteger.ZERO?(new BigInteger((JOptionPane.showInputDialog(
                 null,
                 "Enter the number from which other number is subtracted.",
@@ -115,7 +115,7 @@ public class BigIntegerExecution {
         return big.subtract(number1, number2);
     }
 
-    private static BigInteger multiply(BigInteger result) {
+    private  BigInteger multiply(BigInteger result) {
         LinkedList<BigInteger> list1 = new LinkedList<>();
         list1.add(result);
         BigInteger number = BigInteger.ZERO;
@@ -139,7 +139,7 @@ public class BigIntegerExecution {
         return big.multiply(list1);
     }
 
-    private static BigInteger divide(BigInteger result){
+    private BigInteger divide(BigInteger result){
         BigInteger number1 = result==BigInteger.ZERO?(new BigInteger((JOptionPane.showInputDialog(
                 null,
                 "Enter the quotient",

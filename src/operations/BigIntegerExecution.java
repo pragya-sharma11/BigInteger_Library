@@ -6,6 +6,10 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class BigIntegerExecution {
+    /**
+     * This function calculates the values for given operation.
+     * we can perform 4 operations in it: - Add, subtract, multiply, delete.
+     */
     public void calculate() {
         Scanner scanner = new Scanner(System.in);
         BigInteger result = BigInteger.ZERO;
@@ -53,6 +57,12 @@ public class BigIntegerExecution {
         System.out.println(result);
     }
 
+    /**
+     * This function takes the values in LinkedList and add all the values of LinkedList
+     *
+     * @param result
+     * @return
+     */
     private BigInteger add(BigInteger result) {
         LinkedList<BigInteger> list = new LinkedList<>();
         list.add(result);
@@ -76,6 +86,13 @@ public class BigIntegerExecution {
         return big.add(list);
     }
 
+    /**
+     * This function tells you to enter either 1 or 2 values depending on the situation.
+     * This will be used to subtract the values.
+     *
+     * @param result
+     * @return
+     */
     private BigInteger sub(BigInteger result) {
         BigInteger number1 = result == BigInteger.ZERO ? (new BigInteger((JOptionPane.showInputDialog(
                 null,
@@ -95,6 +112,12 @@ public class BigIntegerExecution {
         return big.subtract(number1, number2);
     }
 
+    /**
+     * This function tell you to enter the values you want to multiply, storing them in LinkedList
+     *
+     * @param result
+     * @return
+     */
     private BigInteger multiply(BigInteger result) {
         LinkedList<BigInteger> list1 = new LinkedList<>();
         list1.add(result);
@@ -118,6 +141,12 @@ public class BigIntegerExecution {
         return big.multiply(list1);
     }
 
+    /**
+     * This function will ask you to enter either two or one depending upon situation and divide them
+     *
+     * @param result
+     * @return
+     */
     private BigInteger divide(BigInteger result) {
         BigInteger number1 = result == BigInteger.ZERO ? (new BigInteger((JOptionPane.showInputDialog(
                 null,

@@ -1,11 +1,20 @@
 package execution;
 
+import operations.BigIntegerOperations;
+
 import javax.swing.*;
+import java.math.BigInteger;
+import java.util.LinkedList;
 import java.util.Scanner;
+
+enum Choice {
+    ADD, SUBTRACT, MULTIPLY, DIVIDE, EXIT
+}
 
 public class BigIntegerExecution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        BigInteger result = BigInteger.ZERO;
         JOptionPane.showMessageDialog(
                 null,
                 "Choose any operation according to the need -: ADD, SUBTRACT, MULTIPLY, DIVIDE, EXIT ",
@@ -19,17 +28,41 @@ public class BigIntegerExecution {
                 JOptionPane.PLAIN_MESSAGE
         );
         Choice choice = Choice.valueOf(inputChoice);
-        switch (choice){
-            case EXIT:JOptionPane.showMessageDialog(
-                    null,
-                    "You have choosen to exit.Have a nice day!!",
-                    "EXIT",
-                    JOptionPane.CLOSED_OPTION
-            );
+        switch (choice) {
+            case ADD:
+                result = add();
+                break;
+            case EXIT:
+                JOptionPane.showMessageDialog(
+                        null,
+                        "You have choosen to exit.Have a nice day!!",
+                        "EXIT",
+                        JOptionPane.CLOSED_OPTION
+                );
         }
     }
-}
 
-enum Choice{
-    ADD, SUBTRACT, MULTIPLY, DIVIDE, EXIT
+    public static BigInteger add() {
+        LinkedList<BigInteger> list = new LinkedList<>();
+        BigInteger number =BigInteger.ZERO;
+        int i=0;
+        while(i!=1){
+            try {
+                number = (new BigInteger((JOptionPane.showInputDialog(
+                        null,
+                        "Enter the number to be added or write null if u have filled all numbers",
+                        "Number",
+                        JOptionPane.PLAIN_MESSAGE
+                )))
+                );
+                list.add(number);
+            }
+            catch(Exception e ) {
+                i=1;
+            }
+        }
+        BigIntegerOperations big = new BigIntegerOperations();
+
+        return big.add(list);
+    }
 }

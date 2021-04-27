@@ -8,7 +8,18 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 enum Choice {
-    ADD, SUBTRACT, MULTIPLY, DIVIDE, ANSWER
+    ADD('+'),
+    SUBTRACT('-'),
+    MULTIPLY('*'),
+    DIVIDE('/'),
+    ANSWER('=');
+    private final char symbol;
+    Choice(char symbol){
+        this.symbol=symbol;
+    }
+    public char getSymbol(){
+        return this.symbol;
+    }
 }
 
 public class BigIntegerExecution {
@@ -28,21 +39,22 @@ public class BigIntegerExecution {
                 JOptionPane.PLAIN_MESSAGE
         );
         Choice choice = Choice.valueOf(inputChoice);
-        switch (choice) {
-            case ADD:
+        char symbol= choice.getSymbol();
+        switch (symbol) {
+            case '+':
                 result = add(result);
                 break;
-            case SUBTRACT:
+            case '-':
                 result = sub(result);
                 break;
-            case MULTIPLY:
+            case '*':
                 result=result==BigInteger.ZERO?BigInteger.ONE:result;
                 result = multiply(result);
                 break;
-            case DIVIDE:
+            case '/':
                 result = divide(result);
                 break;
-            case ANSWER:
+            case '=':
                 JOptionPane.showMessageDialog(
                         null,
                         String.valueOf(result),
@@ -51,6 +63,7 @@ public class BigIntegerExecution {
                 );
                 break;
         }
+        System.out.println(result);
     }
 
     public static BigInteger add(BigInteger result) {

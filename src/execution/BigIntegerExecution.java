@@ -27,35 +27,37 @@ public class BigIntegerExecution {
         Scanner scanner = new Scanner(System.in);
         BigInteger result = BigInteger.ZERO;
         char symbol='\0';
+        JOptionPane.showMessageDialog(
+                null,
+                "Choose any operation according to the need -: + for ADD, " +
+                        " - for SUBTRACT, * for MULTIPLY, / for DIVIDE, = for ANSWER ",
+                "SELECTION",
+                JOptionPane.PLAIN_MESSAGE
+        );
         do {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Choose any operation according to the need -: ADD, SUBTRACT, MULTIPLY, DIVIDE, ANSWER ",
-                    "SELECTION",
-                    JOptionPane.PLAIN_MESSAGE
-            );
-            String inputChoice = JOptionPane.showInputDialog(
+
+            symbol = (JOptionPane.showInputDialog(
                     null,
                     "Enter Choice",
                     "Choice",
                     JOptionPane.PLAIN_MESSAGE
-            );
-            Choice choice = Choice.valueOf(inputChoice);
-            symbol = choice.getSymbol();
-            switch (symbol) {
+            )).charAt(0);
+            //Choice choice = Choice.valueOf(inputChoice);
+            //symbol = choice.getSymbol();
+            label:switch (symbol) {
                 case '+':
                     result = add(result);
-                    break;
+                    break label;
                 case '-':
                     result = sub(result);
-                    break;
+                    break label;
                 case '*':
                     result = result == BigInteger.ZERO ? BigInteger.ONE : result;
                     result = multiply(result);
-                    break;
+                    break label;
                 case '/':
                     result = divide(result);
-                    break;
+                    break label;
                 case '=':
                     JOptionPane.showMessageDialog(
                             null,
@@ -63,9 +65,9 @@ public class BigIntegerExecution {
                             "ANSWER",
                             JOptionPane.CLOSED_OPTION
                     );
-                    break;
+
             }
-        }while (symbol == '=');
+        }while (symbol != '=');
         System.out.println(result);
     }
 
